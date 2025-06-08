@@ -124,6 +124,8 @@ class KeyboardManager:
     self.pressed_keys: Set[Union[Key, KeyCode]] = set()
     self.key_sequence: List[Union[Key, KeyCode]] = []
     self.keyboard_listener: Optional[keyboard.Listener] = None
+    self.suppress_input = False
+    self.unlock_callback = None
 
   def _parse_unlock_sequence(self, sequence: List[str]) -> List[Union[Key, KeyCode]]:
     return [self._parse_key(key_str) for key_str in sequence]
@@ -143,10 +145,11 @@ class KeyboardManager:
 
   def start_listening(self, unlock_callback):
     if self.keyboard_listener is None:
+      self.unlock_callback = unlock_callback
       self.keyboard_listener = keyboard.Listener(
-        on_press=lambda key: self._on_key_press(key, unlock_callback),
-        on_release=self._on_key_release,
-        suppress=False,
+        on_press=self._handle_key_press,  # type: ignore
+        on_release=self._on_key_release,  # type: ignore
+        suppress=self.suppress_input,
       )
       self.keyboard_listener.start()
 
@@ -156,9 +159,33 @@ class KeyboardManager:
       self.keyboard_listener = None
     self.pressed_keys.clear()
     self.key_sequence.clear()
+    self.suppress_input = False
+    self.unlock_callback = None
+
+  def enable_suppression(self):
+    self.suppress_input = True
+    if self.keyboard_listener:
+      # Store the current callback before stopping
+      current_callback = self.unlock_callback
+      self.stop_listening()
+      self.unlock_callback = current_callback
+      self.keyboard_listener = keyboard.Listener(
+        on_press=self._handle_key_press,  # type: ignore
+        on_release=self._on_key_release,  # type: ignore
+        suppress=True,
+      )
+      self.keyboard_listener.start()
+
+  def disable_suppression(self):
+    self.suppress_input = False
+
+  def _handle_key_press(self, key: Optional[Union[Key, KeyCode]]):
+    return self._on_key_press(key, self.unlock_callback)
 
   def _on_key_press(self, key: Optional[Union[Key, KeyCode]], unlock_callback):
     if not key:
+      if self.suppress_input:
+        return False
       return
 
     normalized_key = self._normalize_key(key)
@@ -167,16 +194,25 @@ class KeyboardManager:
     if normalized_key not in self.key_sequence:
       self.key_sequence.append(normalized_key)
 
-    if self._check_unlock_sequence():
+    if self._check_unlock_sequence() and unlock_callback:
       unlock_callback()
+
+    # If suppression is enabled, block all keys except our unlock sequence
+    if self.suppress_input:
+      return False
 
   def _on_key_release(self, key: Optional[Union[Key, KeyCode]]):
     if not key:
+      if self.suppress_input:
+        return False
       return
 
     normalized = self._normalize_key(key)
     self.pressed_keys.discard(normalized)
     self.key_sequence.clear()
+    
+    if self.suppress_input:
+      return False
 
   def _check_unlock_sequence(self) -> bool:
     if len(self.pressed_keys) < len(self.unlock_sequence):
@@ -253,9 +289,11 @@ class InputManager:
 
   def enable_input_suppression(self):
     self.mouse_manager.enable_suppression()
+    self.keyboard_manager.enable_suppression()
 
   def disable_input_suppression(self):
     self.mouse_manager.disable_suppression()
+    self.keyboard_manager.disable_suppression()
 
 
 class CustomButton(tk.Button):
