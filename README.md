@@ -1,86 +1,102 @@
-# Input Lock 🧼
+<br>
+<p align="center">
+  <img src="assets/app_icon.ico" alt="Input Lock Logo" width="128">
+  <h1 align="center">Input Lock</h1>
+  <p align="center">
+    The perfect tool to temporarily lock your keyboard and mouse.
+    <br>
+    Clean your gear, prevent cat-on-keyboard incidents, or just take a hands-free break.
+    <br>
+    <br>
+    <a href="https://github.com/volkanncicek/input-lock/releases"><strong>➡️ Download Latest Release</strong></a>
+    ·
+    <a href="https://github.com/volkanncicek/input-lock/issues/new?assignees=&labels=bug&template=bug_report.md&title=">Report a Bug</a>
+    ·
+    <a href="https://github.com/volkanncicek/input-lock/issues/new?assignees=&labels=enhancement&template=feature_request.md&title=">Request a Feature</a>
+  </p>
+</p>
 
-A modern desktop application that temporarily locks your computer's input (keyboard and mouse) for a specified duration, perfect for taking cleaning breaks or preventing accidental input during maintenance tasks.
+<p align="center">
+  <img src="https://img.shields.io/github/v/release/volkanncicek/input-lock?style=for-the-badge" alt="Latest Release">
+  <img src="https://img.shields.io/github/downloads/volkanncicek/input-lock/total?style=for-the-badge&color=blue" alt="Downloads">
+  <img src="https://img.shields.io/badge/Platform-Windows-0078D6?style=for-the-badge&logo=windows" alt="Platform">
+  <img src="https://img.shields.io/github/license/volkanncicek/input-lock?style=for-the-badge" alt="License">
+</p>
 
-## Features
+---
 
-✨ **Modern UI** - Clean, intuitive interface with automatic dark/light theme detection  
-⏱️ **Timed Lock** - Default 2-minute lock duration (configurable)  
-🔓 **Emergency Unlock** - Customizable key combination (Shift + Alt + L by default)  
-🌍 **Multi-language Support** - Automatic system language detection  
-🖱️ **Complete Input Blocking** - Suppresses both keyboard and mouse input  
-🪟 **Windows Integration** - Native Windows theming and title bar styling  
-📱 **Fullscreen Overlay** - Immersive lock screen with countdown timer  
+Ever tried to wipe down your keyboard, only to accidentally type `asdflkjfslkj` into a work chat and send it? Or maybe your cat decided your laptop was the perfect napping spot during an important task?
 
-## Requirements
+**Input Lock is the simple, elegant solution.** It's a lightweight Windows app that puts up a clean, fullscreen overlay and completely blocks your keyboard and mouse. When the timer is up, everything goes back to normal.
 
-- Windows 10/11
-- Python 3.7+
-- Required Python packages (see Installation)
 
-## Installation
+*(Example GIF showing the app locking and the countdown timer)*
 
-### Option 1: Download Pre-built Executable (Recommended)
+## ✨ Features
 
-1. **Download the latest release**
-   - Go to the [GitHub Releases](../../releases) page
-   - Download the latest `input-lock.exe` file
-   - No Python installation required!
+- **One-Click Lock:** A simple, intuitive UI to start the lock.
+- **Timed & Secure:** A default 2-minute timer gives you plenty of time to clean.
+- **Emergency Hatch:** Can't wait? Use the customizable emergency unlock combo (`Shift + Alt + L` by default).
+- **Smart Theming:** Automatically adapts to your Windows light or dark mode.
+- **Total Block:** Disables mouse movement, clicks, and all keyboard input.
+- **Native Look & Feel:** Blends in perfectly with your Windows 10/11 desktop.
 
-2. **Run the application**
-   - Double-click the downloaded `input-lock.exe` file
-   - The application will start immediately
+## 🚀 Get Started in 60 Seconds
 
-### Option 2: Run from Source
+### The Easy Way (Recommended)
 
-1. **Clone or download this repository**
-   ```bash
-   git clone <repository-url>
-   cd input-lock
-   ```
+No complex setup needed. Just download and run!
 
-2. **Install required dependencies**
-   ```bash
-   pip install -r requirements.txt
-   ```
+1.  **[➡️ Download the latest `input-lock.exe` from the Releases page.](https://github.com/volkanncicek/input-lock/releases)**
+2.  Double-click the downloaded file to run it.
+3.  That's it!
 
-   **Required packages:**
-   - `tkinter` (usually included with Python)
-   - `pynput` - For keyboard/mouse monitoring
-   - `Pillow` - For image processing
-   - `darkdetect` - For system theme detection
-   - `sv-ttk` - For modern tkinter themes
-   - `pywinstyles` - For Windows-specific styling
+### For Developers (Running from Source)
 
-## Usage
+If you want to tinker with the code:
 
-### Basic Usage
+1.  **Clone the repository:**
+    ```sh
+    git clone https://github.com/volkanncicek/input-lock.git
+    cd input-lock
+    ```
+2.  **Set up a virtual environment:**
+    ```sh
+    python -m venv venv
+    .\venv\Scripts\activate
+    ```
+3.  **Install dependencies:**
+    ```sh
+    pip install -r requirements.txt
+    ```
+4.  **Run the app:**
+    ```sh
+    python main.py
+    ```
 
-1. **Run the application**
-   ```bash
-   python main.py
-   ```
+## ⚙️ How It Works
 
-2. **Lock your system**
-   - Click the "Lock" button
-   - Your screen will be locked with a fullscreen overlay
-   - Mouse and keyboard input will be suppressed
+Using Input Lock is as easy as 1-2-3.
 
-3. **Unlock methods**
-   - **Wait for timer**: The system automatically unlocks after 2 minutes
-   - **Emergency unlock**: Press `Shift + Alt + L` simultaneously
+1.  **LOCK:** Launch the app and click the big **`Lock`** button.
+2.  **CLEAN:** Your screen is now locked. Wipe down your keyboard, clean your monitor, or step away with peace of mind. A countdown timer shows you how much time is left.
+3.  **DONE:** The system unlocks automatically when the timer hits zero. To unlock early, just press the emergency hotkey: **`Shift + Alt + L`**.
 
-### Lock Process
+## 🤝 How to Contribute
 
-The application follows a simple 3-step process:
+We love contributions from the community! Whether it's adding a new feature, fixing a bug, or helping us support more platforms, your help is welcome.
 
-1. **🔒 Lock** - Click to start the locking process
-2. **🧼 Clean** - Clean your keyboard/screen while input is blocked
-3. **✅ Done** - System automatically unlocks or use emergency combo
+-   **🖥️ Platform Support:** The biggest goal is to bring this to **macOS** and **Linux**.
+-   **💡 Feature Ideas:** Have a great idea? [Open a feature request.](https://github.com/volkanncicek/input-lock/issues/new?assignees=&labels=enhancement&template=feature_request.md&title=)
+-   **🐛 Bug Reports:** Found an issue? [Let us know!](https://github.com/volkanncicek/input-lock/issues/new?assignees=&labels=bug&template=bug_report.md&title=)
 
-## Contributing
+Ready to jump in?
+1.  Fork the repository.
+2.  Create your feature branch (`git checkout -b feature/MyAwesomeFeature`).
+3.  Commit your changes (`git commit -m 'Add MyAwesomeFeature'`).
+4.  Push to the branch (`git push origin feature/MyAwesomeFeature`).
+5.  Open a Pull Request!
 
-If you scrolled down to this section, you most likely appreciate open source. If you want to contribute, please feel free to submit issues, feature requests, or pull requests to improve the application.
+## 📜 License
 
-## License
-This project is completely open source under the MIT License. Feel free to use, modify, and distribute it as you wish. See [LICENSE](LICENSE) for more details.
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details. Feel free to use, modify, and distribute it as you see fit.
