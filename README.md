@@ -29,8 +29,9 @@ Ever tried to wipe down your keyboard, only to accidentally type `asdflkjfslkj` 
 
 **Input Lock is the simple, elegant solution.** It's a lightweight Windows app that puts up a clean, fullscreen overlay and completely blocks your keyboard and mouse. When the timer is up, everything goes back to normal.
 
-
-*(Example GIF showing the app locking and the countdown timer)*
+<p align="center">
+  <img src="assets/screenshot.png" alt="Input Lock Application Screenshot" width="600">
+</p>
 
 ## ✨ Features
 
