@@ -42,9 +42,7 @@ def detect_system_language() -> str:
   try:
     system_locale = locale.getlocale()[0]
     if system_locale:
-      # Extract language code (e.g., 'tr_TR' -> 'tr')
       lang_code = system_locale.split("_")[0].lower()
-      # Return if supported, otherwise fallback to default
       return lang_code if lang_code in TRANSLATIONS else DEFAULT_LANGUAGE
   except Exception:
     pass
