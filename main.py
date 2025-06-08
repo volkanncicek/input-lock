@@ -339,7 +339,7 @@ class LockOverlay:
     self.clean_image_ref = self.image_manager.load_png_image(ASSETS_DIR / "step-clean.png", (120, 120))
     img_label = tk.Label(
       content_frame,
-      image=self.clean_image_ref,
+      image=self.clean_image_ref,  # type: ignore
       bg=self.theme_manager.get_color("overlay_bg"),
     )
     img_label.pack(pady=(0, 30))
@@ -484,7 +484,7 @@ class CleanLockApp:
     )
     self.widgets[f"{step_name}_step"].pack(pady=(0, 4))
 
-    img_label = tk.Label(column, image=image, bg=self.theme_manager.get_color("background"))
+    img_label = tk.Label(column, image=image, bg=self.theme_manager.get_color("background"))  # type: ignore
     img_label.image = image  # type: ignore
     img_label.pack()
 
@@ -510,8 +510,7 @@ class CleanLockApp:
 
   def _create_arrow_separator(self, parent, arrow_image: ImageTk.PhotoImage):
     arrow_col = tk.Frame(parent, bg=self.theme_manager.get_color("background"))
-
-    img_label = tk.Label(arrow_col, image=arrow_image, bg=self.theme_manager.get_color("background"))
+    img_label = tk.Label(arrow_col, image=arrow_image, bg=self.theme_manager.get_color("background"))  # type: ignore
     img_label.image = arrow_image  # type: ignore
     img_label.pack()
 
