@@ -20,7 +20,6 @@ from localization import DEFAULT_LANGUAGE, TRANSLATIONS, detect_system_language
 
 @dataclass
 class AppConfig:
-
   lock_duration_seconds: int = 60 * 2
   unlock_sequence: List[str] = field(default_factory=lambda: ["shift", "alt_l", "l"])
   language: str = field(default_factory=detect_system_language)
@@ -338,7 +337,11 @@ class LockOverlay:
     ).pack(pady=(0, 30))
 
     self.clean_image_ref = self.image_manager.load_png_image(ASSETS_DIR / "step-clean.png", (120, 120))
-    img_label = tk.Label(content_frame, image=self.clean_image_ref, bg=self.theme_manager.get_color("overlay_bg"))
+    img_label = tk.Label(
+      content_frame,
+      image=self.clean_image_ref,
+      bg=self.theme_manager.get_color("overlay_bg"),
+    )
     img_label.pack(pady=(0, 30))
 
     self.timer_label = tk.Label(
@@ -615,7 +618,13 @@ class CleanLockApp:
     self._start_countdown_timer()
 
   def _create_lock_overlay(self):
-    self.overlay = LockOverlay(self.root, self.theme_manager, self.localization, self.image_manager, self._format_unlock_combo())
+    self.overlay = LockOverlay(
+      self.root,
+      self.theme_manager,
+      self.localization,
+      self.image_manager,
+      self._format_unlock_combo(),
+    )
     self.overlay.create(self.countdown_seconds)
 
   def _start_input_monitoring(self):
