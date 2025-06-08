@@ -47,7 +47,7 @@ Ever tried to wipe down your keyboard, only to accidentally type `asdflkjfslkj` 
 
 No complex setup needed. Just download and run!
 
-1.  **[➡️ Download the latest `input-lock.exe` from the Releases page.](https://github.com/volkanncicek/input-lock/releases)**
+1.  **[➡️ Download the latest `InputLock.exe` from the Releases page.](https://github.com/volkanncicek/input-lock/releases)**
 2.  Double-click the downloaded file to run it.
 3.  That's it!
 
