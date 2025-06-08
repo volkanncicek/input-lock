@@ -1,0 +1,6 @@
+darkdetect==0.8.0
+pillow==11.2.1
+pynput==1.8.1
+pywinstyles==1.8
+six==1.17.0
+sv-ttk==2.6.0
