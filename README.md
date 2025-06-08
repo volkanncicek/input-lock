@@ -17,7 +17,7 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/github/v/release/volkanncicek/input-lock?style=for-the-badge" alt="Latest Release">
+  <img src="https://img.shields.io/github/v/release/volkanncicek/input-lock?include_prereleases&style=for-the-badge" alt="Latest Release">
   <img src="https://img.shields.io/github/downloads/volkanncicek/input-lock/total?style=for-the-badge&color=blue" alt="Downloads">
   <img src="https://img.shields.io/badge/Platform-Windows-0078D6?style=for-the-badge&logo=windows" alt="Platform">
   <img src="https://img.shields.io/github/license/volkanncicek/input-lock?style=for-the-badge" alt="License">
